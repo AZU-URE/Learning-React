@@ -1,0 +1,34 @@
+<!-- basic hellow world with js -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Namaste React</title>
+  </head>
+  <body>
+    <p>Top of the root not gonna get replaced</p>
+    <div id="root">
+      <h1>I was here before but after 3secs not anymore</h1>
+    </div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+
+    <script src="./App.js"></script>
+  </body>
+</html>
+
+<!-- Code to inject heading using js -->
+<!-- <script>
+  const root = document.getElementById("root");
+  const heading = document.createElement("h1");
+  heading.innerText = "Hello world from javascript";
+  root.appendChild(heading);
+  console.log(heading); // prints simple html h1 element
+</script> -->
