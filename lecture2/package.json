@@ -1,0 +1,11 @@
+{
+  "name": "react-ignite",
+  "version": "1.0.0",
+  "description": "Contains code for lecture 2 of series",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC"
+}
