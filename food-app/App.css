@@ -32,10 +32,8 @@
 
 .res-container {
   padding: 0rem 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: start;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .res-card {
