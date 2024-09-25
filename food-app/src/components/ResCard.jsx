@@ -1,6 +1,6 @@
 import { RES_IMG_URL } from "../utils/urls";
 const ResCard = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const { resData } = props;
   const { name, cloudinaryImageId, costForTwo, cuisines, avgRating, sla } =

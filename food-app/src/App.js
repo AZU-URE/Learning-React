@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 
 const App = () => {
+  console.log("inside app");
   return (
     <div className="app">
       <Header />
