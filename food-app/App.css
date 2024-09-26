@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  color: black;
 }
 .header {
   display: flex;
@@ -17,10 +19,12 @@
   list-style: none;
   display: flex;
 }
-.nav-list > ul > li {
+.nav-link {
   padding: 0.5rem;
   font-size: 1.1rem;
   margin: 0 20px;
+  text-decoration: none;
+  color: black;
 }
 .login-btn {
   padding: 0.1rem 1rem;
