@@ -18,6 +18,9 @@ const Header = () => {
           <Link to={"/about"} className="nav-link">
             <li>About Us</li>
           </Link>
+          <Link to={"/grocery"} className="nav-link">
+            <li>Grocery</li>
+          </Link>
           <li className="nav-link">Cart</li>
           <button
             className="login-btn"

@@ -4,39 +4,20 @@ import Shimmer from "./Shimmer";
 import ResCard from "./ResCard";
 import { RES_LIST_API } from "../utils/urls";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurantList from "../utils/useRestaurantList";
 const Body = () => {
-  const [restaurantList, setRestaurantList] = useState([]);
-  const [list, setList] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [restaurantList, setRestaurantList] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(RES_LIST_API);
-      const data = await response.json();
-      // setRestaurantList(data);
-      setRestaurantList(
-        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setList(
-        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
   useEffect(() => {
     search();
   }, [searchText]);
 
+  const list = useRestaurantList();
+  useEffect(() => {
+    setRestaurantList(list);
+  }, [list]);
   const search = () => {
     const filteredList = list.filter((res) => {
       return res?.info?.name.toLowerCase().includes(searchText.toLowerCase());
@@ -44,10 +25,13 @@ const Body = () => {
     setRestaurantList(filteredList);
   };
 
-  if (loading) {
+  const onlineStatus = useOnlineStatus();
+
+  if (!onlineStatus) {
+    return <h1>You are offline</h1>;
   }
 
-  return loading ? (
+  return list.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
