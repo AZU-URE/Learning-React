@@ -8,13 +8,16 @@ import About from "./components/About";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 const Grocery = lazy(() => import("./components/Grocery"));
+import UserContextProvider from "./utils/userContext";
 
 const App = () => {
   console.log("inside app");
   return (
     <div className="app">
-      <Header />
-      <Outlet />
+      <UserContextProvider>
+        <Header />
+        <Outlet />
+      </UserContextProvider>
     </div>
   );
 };

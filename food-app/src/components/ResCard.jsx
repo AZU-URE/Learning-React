@@ -25,4 +25,26 @@ const ResCard = (props) => {
   );
 };
 
+const addOffer = (RestaurantCard) => {
+  const AddOffer = (props) => {
+    // console.log(props);
+
+    const { resData } = props;
+    // console.log(resData?.info);
+
+    const { header, subHeader } = resData?.info?.aggregatedDiscountInfoV3;
+
+    return (
+      <div className="res-card-offer">
+        <h4 className="offer">
+          {header} {subHeader}
+        </h4>
+        <RestaurantCard {...props}></RestaurantCard>
+      </div>
+    );
+  };
+  return AddOffer;
+};
+export { addOffer };
+
 export default ResCard;

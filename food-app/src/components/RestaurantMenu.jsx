@@ -9,10 +9,16 @@ import useRestaurantInfo from "../utils/useRestaurantInfo";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const { resInfo, resMenu } = useRestaurantInfo(resId);
+  const [show, setShow] = useState(-1);
+  useEffect(() => {
+    if (resMenu != null) {
+      setShow(resMenu[2]?.card?.card?.title);
+      // console.log(resMenu[2].card.card.title);
+    }
+  }, [resMenu]);
   if (resInfo === null && resMenu === null) {
     return <Shimmer />;
   }
-
   return (
     <div className="res-menu-container">
       <div className="res-menu">
@@ -30,7 +36,13 @@ const RestaurantMenu = () => {
   </div> */}
         {resMenu.map((res, index) =>
           res.card.card["@type"].split(".").pop() === "ItemCategory" ? (
-            <ItemContainer res={res} index={index} key={res.card.card.title} />
+            <ItemContainer
+              res={res}
+              index={index}
+              key={res.card.card.title}
+              show={show}
+              setShow={setShow}
+            />
           ) : null
         )}
       </div>
@@ -39,9 +51,10 @@ const RestaurantMenu = () => {
 };
 
 function ItemContainer(props) {
-  const { res, index } = props;
+  const { res, index, show, setShow } = props;
   const item = res.card.card;
-  const [show, setShow] = useState(false);
+  // console.log(item);
+
   useEffect(() => {
     if (index === 2) {
       setShow(true);
@@ -51,17 +64,17 @@ function ItemContainer(props) {
     <div>
       <div className="type-container">
         <h3 className="item-type">
-          {item.title} ({res?.card?.card?.itemCards.length})
+          {item.title} ({item.itemCards.length})
         </h3>
         <button
           onClick={() => {
-            show ? setShow(false) : setShow(true);
+            show === item.title ? setShow(-1) : setShow(item.title);
           }}
         >
           {show ? "Hide" : "Show"}
         </button>
       </div>
-      {show ? (
+      {show === res.card.card.title ? (
         <div className="items-container">
           {item.itemCards.map((item) => (
             <ItemCard info={item} key={item.card.info.id}></ItemCard>

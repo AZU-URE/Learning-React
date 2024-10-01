@@ -68,8 +68,8 @@
 .res-card {
   width: 15rem;
   margin: 10px;
-  background-color: #f0f0f0;
   padding: 0.5rem;
+  background-color: #f0f0f0;
 }
 .res-card > h3 {
   margin: 10px 0px;
@@ -85,6 +85,22 @@
   width: 100%;
   height: 10rem;
   background: #000;
+}
+.res-card-offer {
+  position: relative;
+  /* width: 18rem; */
+  /* background-color: red; */
+  display: flex;
+  .offer {
+    position: absolute;
+    background-color: rgba(59, 57, 57, 0.786);
+    color: white;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    width: 14rem;
+    top: 8.75rem;
+    left: 1.1rem;
+  }
 }
 .res-img {
   width: 100%;

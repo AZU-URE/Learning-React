@@ -2,7 +2,10 @@ import { LOGO } from "../utils/urls";
 import { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../utils/userContext";
 const Header = () => {
+  const { name } = useContext(UserContext);
   const [login, setLogin] = useState("Login");
   return (
     <div className="header">
@@ -22,6 +25,7 @@ const Header = () => {
             <li>Grocery</li>
           </Link>
           <li className="nav-link">Cart</li>
+          <li className="nav-link">{name}</li>
           <button
             className="login-btn"
             onClick={() =>
